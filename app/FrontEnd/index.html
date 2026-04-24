@@ -8,9 +8,26 @@
 </head>
 <body>
     <div class="wrapper">
-        <input type="text" class="wrapper_message-input" id="messageInput">
-        <input type="text" class="wrapper_chat-id-input" id="messageChatIdInput">
-        <button class="send-btn" id="sendBtn">SEND</button>
+        <h2> Telegram web admin panel</h2>
+        <div class="inputs">
+            <h3 class="form-title">Отправка сообщения пользователю</h3>
+            <label class="text" for="messageInput">Сообщение</label>
+            <input type="text" class="wrapper_message-input" id="messageInput">
+
+            <label class="text" for="messageChatIdInput">Chat_id/user_id</label>
+            <input type="text" class="wrapper_chat-id-input" id="messageChatIdInput">
+            <button class="send-btn" id="sendBtn">SEND</button>
+        </div>
+
+        
+        <div class="inputs">
+            <h3 class="form-title">Рассылка всем пользователям</h3>
+            <label class="text" for="messageInput">Сообщение</label>
+            <input type="text" class="wrapper_message-input" id="messageInputAll">
+            <button class="send-btn" id="sendBtnAll">SEND</button>
+        </div>
+        
+        
     </div>
     <script src="script/script.js"></script>
 </body>
