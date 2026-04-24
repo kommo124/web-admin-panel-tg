@@ -1,5 +1,9 @@
 const messageInput = document.getElementById('messageInput')
+const messageInputAll = document.getElementById('messageInputAll')
+
 const sendBtn = document.getElementById('sendBtn')
+const sendBtnAll = document.getElementById('sendBtnAll')
+
 const chatIdInput = document.getElementById('messageChatIdInput')
 
 sendBtn.addEventListener('click', async (e) => {
@@ -33,4 +37,28 @@ sendBtn.addEventListener('click', async (e) => {
         console.error('Ошибка: ', error)
     }
 
+})
+
+sendBtnAll.addEventListener('click', async (e) => {
+    e.preventDefault()
+    const messageInputAllVal = messageInputAll.value
+
+    try {
+        const response = await fetch('http://localhost:8000/sendAll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                text: messageInputAllVal
+            })
+        })
+
+        const result = await response.json()
+        console.log('Сообщение успешно отправлено, проверьте чат с ботом')
+
+    } catch (error) {
+        console.log('Ошибка', error)
+    }
 })
