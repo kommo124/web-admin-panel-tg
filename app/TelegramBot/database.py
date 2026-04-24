@@ -18,8 +18,11 @@ def getAllUsers():
     
 
 def addUser(user_id: int):
-    cursor.execute("INSERT INTO userid (userid) VALUES (?)", (user_id,))
-    conn.commit()
+    if user_id != user_id:
+        cursor.execute("INSERT INTO userid (userid) VALUES (?)", (user_id,))
+        conn.commit()
+    else:
+        "что то не так"
     
 
 
