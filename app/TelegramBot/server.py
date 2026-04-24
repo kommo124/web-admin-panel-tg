@@ -39,3 +39,18 @@ async def sendMessage(request: MessageRequest):
         return {"status": "ok", "message": "Message sent"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post('/sendAll')
+async def sendMessageToAll(request: sendAllRequest):
+    users = getAllUsers()
+    try:
+        for user_id in users:
+            await bot.send_message(
+                chat_id = user_id,
+                text = request.text
+            )
+            await asyncio.sleep(request.delay_between_messages)
+            
+        return {"status": "ok", "message": "Message sent"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
