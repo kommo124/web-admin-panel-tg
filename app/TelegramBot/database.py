@@ -22,7 +22,11 @@ def addUser(user_id: int):
         cursor.execute("INSERT INTO userid (userid) VALUES (?)", (user_id,))
         conn.commit()
     else:
-        "что то не так"
-    
+        print("error while request")
+
+def getAllUsersAsNumber():
+    cursor.execute("SELECT COUNT(*) AS total_rows FROM userid")
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
 
 
