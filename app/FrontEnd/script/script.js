@@ -62,3 +62,22 @@ sendBtnAll.addEventListener('click', async (e) => {
         console.log('Ошибка', error)
     }
 })
+
+async function loadTotalUsers() {
+    const totalElement = document.getElementById('totalUsers')
+    try {
+        const response = await fetch("http://localhost:8000/stats")
+        const data = await response.json()
+        const total = data.total_users
+        if (data.success !== false) {
+            totalElement.textContent = total
+            
+        }
+    } catch (error) {
+        console.error('Ошибка: ', error)
+    }
+}
+
+window.addEventListener("load", loadTotalUsers)
+
+setInterval(loadTotalUsers, 10000)
