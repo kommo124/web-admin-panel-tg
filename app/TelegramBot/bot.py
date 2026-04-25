@@ -1,7 +1,7 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
-from database import init_db, getAllUsers
+from database import init_db, getAllUsers, getAllUsersAsNumber
 from handlers.start import router
 from dotenv import load_dotenv
 import os
@@ -19,6 +19,7 @@ dp = Dispatcher()
 async def main():
     
     init_db()
+    print(getAllUsersAsNumber())
     print(getAllUsers())
     
     dp.include_router(router)
