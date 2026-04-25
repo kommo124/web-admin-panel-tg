@@ -1,12 +1,20 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel  # Добавьте импорт
+from pydantic import BaseModel
 from bot import bot
-
+from database import getAllUsers, getAllUsersAsNumber
+import asyncio
 
 class MessageRequest(BaseModel):
     chat_id: int
     text: str
+
+class sendAllRequest(BaseModel):
+    text: str
+    delay_between_messages: float = 0.5
+
+class allUsersRequest(BaseModel):
+    total_users: int
 
 app = FastAPI()
 
@@ -54,3 +62,8 @@ async def sendMessageToAll(request: sendAllRequest):
         return {"status": "ok", "message": "Message sent"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/stats")
+async def usersCount():
+    total = getAllUsersAsNumber()
+    return{"total_users": total[0]}
