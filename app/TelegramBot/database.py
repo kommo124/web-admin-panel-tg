@@ -29,4 +29,3 @@ def getAllUsersAsNumber():
     rows = cursor.fetchall()
     return [row[0] for row in rows]
 
-
