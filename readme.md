@@ -1,5 +1,12 @@
 # Web Admin Panel for Telegram Bot
 
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![aiogram](https://img.shields.io/badge/aiogram-Telegram-blue)
+![HTML](https://img.shields.io/badge/HTML-5-orange)
+![CSS](https://img.shields.io/badge/CSS-3-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+
 A lightweight web-based admin panel for managing a Telegram bot: sending messages to individual users, broadcasting to all users, and viewing basic statistics.
 
 ---
