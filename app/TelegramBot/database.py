@@ -18,14 +18,14 @@ def getAllUsers():
     
 
 def addUser(user_id: int):
-    if user_id != user_id:
         cursor.execute("INSERT INTO userid (userid) VALUES (?)", (user_id,))
         conn.commit()
-    else:
-        print("error while request")
+        
 
 def getAllUsersAsNumber():
-    cursor.execute("SELECT COUNT(*) AS total_rows FROM userid")
+    cursor.execute("SELECT COUNT(userid) AS total_rows FROM userid")
     rows = cursor.fetchall()
     return [row[0] for row in rows]
+
+    
 
