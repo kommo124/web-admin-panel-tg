@@ -5,7 +5,6 @@ import asyncio
 from aiogram import Bot
 from database import getAllUsers, getAllUsersAsNumber
 
-# ===== Модели =====
 class MessageRequest(BaseModel):
     chat_id: int
     text: str
@@ -16,7 +15,6 @@ class SendAllRequest(BaseModel):
     delay_between_messages: float = 0.5
     token: str
 
-# ===== Инициализация =====
 app = FastAPI()
 
 app.add_middleware(
@@ -27,12 +25,11 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-# ===== Роуты =====
 @app.get("/")
 async def root():
     return {"message": "Server is running"}
 
-# ===== Отправка одному =====
+
 @app.post("/send")
 async def send_message(request: MessageRequest):
     try:
@@ -45,7 +42,7 @@ async def send_message(request: MessageRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# ===== Отправка всем =====
+
 @app.post("/sendAll")
 async def send_all(request: SendAllRequest):
     users = getAllUsers()
@@ -71,7 +68,6 @@ async def send_all(request: SendAllRequest):
         print(e)
         raise HTTPException(status_code=500, detail=str(e))
 
-# ===== Статистика =====
 @app.get("/stats")
 async def stats():
     total = getAllUsersAsNumber()
