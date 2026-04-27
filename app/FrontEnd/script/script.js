@@ -5,7 +5,6 @@ const sendBtnAll = document.getElementById('sendBtnAll')
 const chatIdInput = document.getElementById('messageChatIdInput')
 const tokenInput = document.getElementById("tokenInput")
 
-// ===== Работа с токеном =====
 if (tokenInput) {
     const savedToken = localStorage.getItem('bot_token')
     if (savedToken) tokenInput.value = savedToken
@@ -15,13 +14,12 @@ if (tokenInput) {
             localStorage.setItem('bot_token', tokenInput.value.trim())
         }
     })
-
+    
     tokenInput.addEventListener('blur', () => {
         localStorage.setItem('bot_token', tokenInput.value.trim())
     })
 }
 
-// ===== Отправка одному =====
 sendBtn.addEventListener('click', async (e) => {
     e.preventDefault()
 
@@ -54,7 +52,6 @@ sendBtn.addEventListener('click', async (e) => {
     }
 })
 
-// ===== Отправка всем =====
 sendBtnAll.addEventListener('click', async (e) => {
     e.preventDefault()
 
@@ -85,7 +82,6 @@ sendBtnAll.addEventListener('click', async (e) => {
     }
 })
 
-// ===== Статистика =====
 async function loadTotalUsers() {
     const totalElement = document.getElementById('totalUsers')
 
